@@ -1,0 +1,6 @@
+glossary:
+  version: 1.0
+  js:
+    js/tooltip.js: { }
+  dependencies:
+    - core/jquery
