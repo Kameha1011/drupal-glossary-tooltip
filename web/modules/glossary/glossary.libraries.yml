@@ -1,5 +1,8 @@
 glossary:
   version: 1.0
+  css:
+    base:
+      css/tooltip.css: { }
   js:
     js/tooltip.js: { }
   dependencies:
