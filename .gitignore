@@ -1,2 +1,4 @@
-.ddev
-vendor
+/*
+!.gitignore
+!/modules/
+!/themes
