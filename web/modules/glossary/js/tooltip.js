@@ -29,15 +29,16 @@ const filterMatchedTerms = (compareArray, containerWords) => {
 const placeTooltip = (termsArray, contentHtml) => {
   let result = contentHtml;
   /*looks for every matched word in the html and replaces it with the tooltip and identifies it with a class and
-  adds the data-tooltip attribute*/ 
+  adds the data-tooltip attribute*/
   for (let i = 0; i < termsArray.length; i++) {
     const term = termsArray[i];
-    result = result.replace(
+    result = result.replaceAll(
       term.title,
       `<span class="tooltip" data-tooltip="${term.title}">
     <a href="/glossary-term/${term.id}" class="tooltip__link">${term.title}</a>
     </span>`
     );
+    console.log(result);
   }
   return result;
 };
@@ -45,24 +46,27 @@ const placeTooltipDescription = (termsArray) => {
   /* this function places the tooltip description in the tooltip container */
   for (let i = 0; i < termsArray.length; i++) {
     const term = termsArray[i];
-    const tooltip = document.querySelector(
+    const matchedTooltips = document.querySelectorAll(
       `.tooltip[data-tooltip="${term.title}"]`
     );
-    const fragment = document.createDocumentFragment();
-    const tooltipElement = document.createElement("div");
-    tooltipElement.classList.add("tooltip__container");
-    tooltipElement.innerHTML = `
-      <div class="tooltip__body">
-      ${
-        term.description.length > 100
-          ? term.description.substring(0, 100) +
-            "... <span class='tooltip__read-more'>Click to read more!</span>"
-          : term.description
-      }
-      </div>
-    `;
-    fragment.appendChild(tooltipElement);
-    tooltip.appendChild(fragment);
+    for (let j = 0; j < matchedTooltips.length; j++) {
+      const tooltip = matchedTooltips[j];
+      const fragment = document.createDocumentFragment();
+      const tooltipElement = document.createElement("div");
+      tooltipElement.classList.add("tooltip__container");
+      tooltipElement.innerHTML = `
+        <div class="tooltip__body">
+        ${
+          term.description.length > 100
+            ? term.description.substring(0, 100) +
+              "... <span class='tooltip__read-more'>Click to read more!</span>"
+            : term.description
+        }
+        </div>
+      `;
+      fragment.appendChild(tooltipElement);
+      tooltip.appendChild(fragment);
+    }
   }
 };
 jQuery(document).ready(async function ($) {
