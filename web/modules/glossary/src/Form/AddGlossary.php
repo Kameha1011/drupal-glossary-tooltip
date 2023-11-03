@@ -4,7 +4,7 @@ namespace Drupal\glossary\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-
+// use Drupal\glossary\Controller\Glossary; <-- crear controller para crear termino e importarlo.
 class AddGlossary extends FormBase{
   public function getFormId(){
     return 'glossary_tooltip_add_glossary';

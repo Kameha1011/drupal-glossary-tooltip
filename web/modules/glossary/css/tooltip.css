@@ -1,3 +1,54 @@
-.node__content{
-    background-color: red;
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #5ea6a5;
+}
+
+.tooltip__link {
+  text-decoration: none;
+  color: #575859;
+  font-weight: 400;
+  background-color: #e7f2f2;
+}
+
+.tooltip__container {
+  overflow: hidden;
+  visibility: hidden;
+  min-width: fit-content;
+  background-color: #0d7978;
+  box-shadow: -3px 5px 10px 0px #000;
+  color: #fff;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: -3.1rem;
+  margin-left: -60px;
+}
+.tooltip__body {
+   font-size: .75rem;
+  line-height: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+.tooltip .tooltip__container::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #0d7978 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip__container {
+  visibility: visible;
+}
+
+.tooltip__read-more {
+    font-weight: bold;
+    color: #FFBF00;
 }
