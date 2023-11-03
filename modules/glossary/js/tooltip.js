@@ -1,7 +1,9 @@
 const fetchTerms = async () => {
   try {
+    // Remember to change this url by the URL that ddev gives you.
+    const baseUrl = "http://localhost:32795";
     let terms;
-    await fetch("http://drupal-tooltip-nestle.ddev.site/get-glossary")
+    await fetch(`${baseUrl}/get-glossary`)
       .then((response) => response.json())
       .then((data) => {
         terms = data;

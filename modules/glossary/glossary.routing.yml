@@ -1,28 +1,28 @@
 glossary.add_glossary_item:
-  path: "/add-glossary"
+  path: "/glossary/add"
   defaults:
     _form: '\Drupal\glossary\Form\AddGlossary'
     _title: "Add a term to the glossary tooltip"
   requirements:
     _permission: "access content"
 glossary.listing:
-  path: "/glossary-list"
+  path: "/glossaryList"
   defaults:
-    _controller: '\Drupal\glossary\Controller\Glossary::view'
-    _title: "List of term in the glossary Tooltip for Nestle"
+    _controller: '\Drupal\glossary\Controller\Glossary::renderAllGlossaryTerms'
+    _title: "List of all terms in the glossary"
   requirements:
     _permission: "access content"
 glossary.api:
-  path: "/get-glossary"
+  path: "/glossary"
   defaults:
-    _controller: '\Drupal\glossary\Controller\Glossary::getDataUrl'
-    _title: "Get glossary data"
+    _controller: '\Drupal\glossary\Controller\Glossary::getAllTerms'
+    _title: "Get all glossary terms on JSON format"
   requirements:
     _permission: "access content"
 glossary.term:
-  path: "/glossary-term/{id}"
+  path: "/glossaryList/{id}"
   defaults:
-    _controller: '\Drupal\glossary\Controller\Glossary::getById'
-    _title: "Description of the term"
+    _controller: '\Drupal\glossary\Controller\Glossary::renderTermById'
+    _title: "Glossary term by id"
   requirements:
     _permission: "access content"

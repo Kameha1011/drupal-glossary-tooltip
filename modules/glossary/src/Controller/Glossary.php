@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class Glossary extends ControllerBase
 {
-  public function view()
+  public function renderAllGlossaryTerms()
   {
     $query = \Drupal::database();
     $results = $query->select('glossary_term', 'g')
@@ -32,7 +32,7 @@ class Glossary extends ControllerBase
     return $contentResult;
   }
 
-  public function getDataUrl()
+  public function getAllTerms()
   {
     $query = \Drupal::database();
     $results = $query->select('glossary_term', 'g')
@@ -53,7 +53,7 @@ class Glossary extends ControllerBase
     return new JsonResponse($content);
   }
 
-  public function getById($id)
+  public function renderTermById($id)
   {
     if (!empty(trim($id))) {
       $query = \Drupal::database();
