@@ -13,6 +13,8 @@ const fetchTerms = async () => {
 };
 const filterMatchedTerms = (compareArray, containerWords) => {
   let result = [];
+  /* loops through the database data and replaces the title with the match word from the html
+   so it can recognize words that are followed by a period */
   for (let i = 0; i < compareArray.length; i++) {
     const element = compareArray[i];
     const filteredTitle = containerWords.filter((word) => {
@@ -26,11 +28,12 @@ const filterMatchedTerms = (compareArray, containerWords) => {
 };
 const placeTooltip = (termsArray, contentHtml) => {
   let result = contentHtml;
+  /*looks for every matched word in the html and replaces it with the tooltip and identifies it with a class and
+  adds the data-tooltip attribute*/ 
   for (let i = 0; i < termsArray.length; i++) {
     const term = termsArray[i];
-    const regex = new RegExp(`\\b${term.title}\\b`);
     result = result.replace(
-      regex,
+      term.title,
       `<span class="tooltip" data-tooltip="${term.title}">
     <a href="/glossary-term/${term.id}" class="tooltip__link">${term.title}</a>
     </span>`
@@ -39,6 +42,7 @@ const placeTooltip = (termsArray, contentHtml) => {
   return result;
 };
 const placeTooltipDescription = (termsArray) => {
+  /* this function places the tooltip description in the tooltip container */
   for (let i = 0; i < termsArray.length; i++) {
     const term = termsArray[i];
     const tooltip = document.querySelector(
@@ -51,7 +55,8 @@ const placeTooltipDescription = (termsArray) => {
       <div class="tooltip__body">
       ${
         term.description.length > 100
-          ? term.description.substring(0, 100) + "... <span class='tooltip__read-more'>Click to read more!</span>"
+          ? term.description.substring(0, 100) +
+            "... <span class='tooltip__read-more'>Click to read more!</span>"
           : term.description
       }
       </div>
