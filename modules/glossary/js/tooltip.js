@@ -37,7 +37,7 @@ const placeTooltip = (termsArray, contentHtml) => {
     result = result.replaceAll(
       term.title,
       `<span class="tooltip" data-tooltip="${term.title}">
-    <a href="/glossary-term/${term.id}" class="tooltip__link">${term.title}</a>
+    <a href="/glossaryList/${term.id}" class="tooltip__link">${term.title}</a>
     </span>`
     );
   }
