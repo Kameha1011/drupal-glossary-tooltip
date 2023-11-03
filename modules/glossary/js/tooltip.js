@@ -3,7 +3,7 @@ const fetchTerms = async () => {
     // Remember to change this url by the URL that ddev gives you.
     const baseUrl = "http://localhost:32795";
     let terms;
-    await fetch(`${baseUrl}/get-glossary`)
+    await fetch(`${baseUrl}/glossary`)
       .then((response) => response.json())
       .then((data) => {
         terms = data;
@@ -40,7 +40,6 @@ const placeTooltip = (termsArray, contentHtml) => {
     <a href="/glossary-term/${term.id}" class="tooltip__link">${term.title}</a>
     </span>`
     );
-    console.log(result);
   }
   return result;
 };
