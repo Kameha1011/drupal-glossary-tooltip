@@ -23,7 +23,9 @@ Follow these steps to set up a Drupal 9 site using DDEV, Composer, and Drush:
 7. Install Drupal using Drush: `ddev drush site:install --account-name=admin --account-pass=admin -y`.
 8. Generate a one-time login link with Drush: `ddev drush uli`.
 9. Launch your Drupal site in the browser: `ddev launch`.
-
+10. In other folder run `git clone https://github.com/Kameha1011/drupal-glossary-tooltip` to get the glossary module files.
+11. A new folder called **drupal-glossary-tooltip** will be created, go inside and copy the modules folder.
+12. Now go back to your drupal folder and inside **./web** replace the existing **modules** folder with the one that you copied from this repository.
 ## Installing the Module
 
 To install the Glossary Tooltip module, follow these steps:
